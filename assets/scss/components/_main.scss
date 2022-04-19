@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input {
+    outline: none;
+}
+
+.hidden {
+    display: none;
+}
+
+main {
+    background-image: url(../image/background001.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+    .inner {
+        width: 100vw;
+        height: 100vh;
+        margin: 0 auto;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .clock {
+            h2 {
+                margin: 0;
+                color: #fff;
+                font-size: 100px;
+                font-weight: 700;
+            }
+        }
+
+        .hello-title {
+            font-weight: 700;
+            font-size: 40px;
+            text-decoration: underline;
+            color: #fff;
+        }
+
+        .login-form {
+            display: flex;
+
+            input {
+                width: 200px;
+                height: 50px;
+                padding: 0;
+                border: 0;
+                border-radius: 3px;
+                text-align: center;
+            }
+
+            button {
+                width: 100px;
+                height: 50px;
+                color: #fff;
+                font-size: 20px;
+                border: 1px solid #fff;
+                box-sizing: border-box;
+                border-radius: 3px;
+                margin: 0 10px;
+                background-color: transparent;
+                cursor: pointer;
+            }
+        }
+
+        .hello-desc {
+            display: block;
+            color: #fff;
+            font-size: 14px;
+            margin: 20px 0 0 0;
+        }
+
+        .quote {
+            position: absolute;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            span {
+                display: block;
+                margin-bottom: 5px;
+                color: #fff;
+            }
+        }
+
+        .todo-list {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            border: 1px solid red;
+
+            .todo-container {}
+        }
+    }
+}
