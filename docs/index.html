@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Momentum</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+    <script defer src="../assets/js/index.js"></script>
 </head>
 
 <body>
@@ -15,6 +16,8 @@
             <div class="clock">
                 <h2></h2>
             </div>
+
+            <div class="weather"></div>
 
             <h2 class="hello-title">Hello</h2>
 
@@ -30,19 +33,14 @@
                 <span></span>
             </div>
 
-            <div class="todo-list"> todo
-                <div class="todo-container">
-                    <form class="todo-form">
-                        <input type="text" placeholder="this area is for to do list">
-                        <button>enter</button>
-                    </form>
-                    <div class="todo-area"></div>
-                </div>
+            <div class="todo">
+                <ul class="todo-list"></ul>
+                <form class="todo-form">
+                    <input type="text" placeholder="Write a To do and Press enter" required>
+                </form>
             </div>
         </div>
     </main>
-
-    <script defer src="../assets/js/index.js"></script>
 </body>
 
 </html>

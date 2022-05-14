@@ -12,7 +12,7 @@ input {
 }
 
 main {
-  background-image: url(../image/background001.jpeg);
+  background-image: url(../image/background1.jpeg);
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -24,19 +24,10 @@ main .inner {
   height: 100vh;
   margin: 0 auto;
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 main .inner .clock h2 {
@@ -54,8 +45,6 @@ main .inner .hello-title {
 }
 
 main .inner .login-form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -74,8 +63,7 @@ main .inner .login-form button {
   color: #fff;
   font-size: 20px;
   border: 1px solid #fff;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   border-radius: 3px;
   margin: 0 10px;
   background-color: transparent;
@@ -92,19 +80,10 @@ main .inner .hello-desc {
 main .inner .quote {
   position: absolute;
   bottom: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 main .inner .quote span {
@@ -113,10 +92,63 @@ main .inner .quote span {
   color: #fff;
 }
 
-main .inner .todo-list {
+main .inner .todo {
+  width: 300px;
+  background-color: #fff;
+  opacity: .8;
   position: absolute;
-  right: 0;
   bottom: 0;
-  border: 1px solid red;
+  right: 0;
+  margin: 10px 20px;
+  border-radius: 4px;
+}
+
+main .inner .todo .todo-form {
+  margin: 0 10px;
+}
+
+main .inner .todo .todo-form input {
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 0;
+  font-size: 1.2em;
+  border: 0;
+}
+
+main .inner .todo .todo-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 20px;
+}
+
+main .inner .todo .todo-list .todo-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+main .inner .todo .todo-list .todo-item .todo-txt {
+  margin-right: 10px;
+  font-size: 1.3em;
+  font-family: sans-serif;
+}
+
+main .inner .todo .todo-list .todo-item .todo-del-btn {
+  width: 20px;
+  height: 20px;
+  outline: none;
+  border: 0;
+  font-size: 1em;
+  font-weight: 900;
+  padding: 0;
+  border-radius: 3px;
+  background-color: #314570;
+  color: #fff;
+}
+
+main .inner .todo .todo-list .todo-item .todo-del-btn:hover {
+  cursor: pointer;
+  opacity: .6;
 }
 /*# sourceMappingURL=style.css.map */

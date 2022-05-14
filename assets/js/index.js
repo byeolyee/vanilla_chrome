@@ -2,6 +2,11 @@ const get = (target) => {
     return document.querySelector(target);
 }
 
+const getAll = (target) => {
+    return document.querySelectorAll(target);
+}
+
+const mainEl = get('main');
 const loginForm = get('.login-form');
 const loginInput = get('.login-form input');
 const loginButton = get('.login-form button');
@@ -14,8 +19,27 @@ const clock = get('.clock h2');
 const quote = get('.quote span:first-child');
 const author = get('.quote span:last-child');
 
-const STORAGE_NAME = "userName";
+const todoForm = get('.todo-form');
+const todoList = get('.todo-list');
+const todoInput = get('.todo-form input');
+
 const myStorage = window.localStorage;
+
+const STORAGE_NAME = "userName";
+const STORAGE_TODOS = "todos";
+
+const API_URL = 'http://localhost:5000/todos';
+
+const setBackgroundImages = () => {
+    const backgroundImages = [];
+    for (let i = 1; i < 11; i++) {
+        backgroundImages.push(`background${i}.jpeg`);
+    }
+
+    //배경이미지는 1~10까지 있음
+    const randomNum = Math.floor(Math.random() * 10) + 1; //1~10까지 무작위 숫자
+    mainEl.style.backgroundImage = `url(../assets/image/background${randomNum}.jpeg)`;
+}
 
 const quotes = [
     {
@@ -72,14 +96,13 @@ const setClock = () => {
     const minutes = String(time.getMinutes()).padStart(2, '0');
     const seconds = String(time.getSeconds()).padStart(2, '0');
 
-    const now = `${hour}:${minutes}:${seconds}`;
+    const now = `${hour}: ${minutes}: ${seconds}`;
     clock.innerText = `🪐 ${now}`;
 }
 
 const setName = () => {
     const userName = loginInput.value;
     myStorage.setItem(STORAGE_NAME, userName);
-    loginForm.style
 }
 
 const getName = () => {
@@ -98,30 +121,97 @@ const sayHello = (name) => {
     }
 }
 
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    setName();
-})
+//todolist start 
 
-const init = () => {
+let todos = [];
 
-    const yourName = getName();
+const saveTodos = () => {
+    localStorage.setItem(STORAGE_TODOS, JSON.stringify(todos));
+}
 
-    if (yourName === null) {
-        loginForm.style.display = "flex";
-    } else if (yourName !== null) {
-        loginForm.style.display = "none";
-        sayHello(yourName);
-        helloDesc.innerText = '';
+const deleteTodo = (e) => {
+    const removeEl = e.target.parentElement;
+    removeEl.remove();
+    const liId = parseInt(removeEl.id);
+    todos = todos.filter((item) => item.id !== liId);
+    saveTodos();
+}
 
-        setInterval(setClock, 1000);
 
-        setQuote();
-    }
+const renderTodo = (item) => {
+    const li = document.createElement('li');
+    li.classList.add('todo-item');
+    li.id = item.id;
+
+    const checkBox = document.createElement('input');
+    checkBox.setAttribute("type", "checkbox");
+    checkBox.classList.add('todo-checkbox');
+
+    const span = document.createElement('span');
+    span.classList.add('todo-txt');
+
+    const button = document.createElement('button');
+    button.classList.add('todo-del-btn');
+
+    button.addEventListener('click', deleteTodo);
+
+    span.innerText = item.text;
+    button.innerText = 'X';
+    li.appendChild(checkBox);
+    li.appendChild(span);
+    li.appendChild(button);
+    todoList.appendChild(li);
 
 }
 
+const handleTodo = (e) => {
+    e.preventDefault();
+    const newTodo = todoInput.value;
+    todoInput.value = '';
+    const newTodoObj = {
+        id: Date.now(),
+        text: newTodo,
+    }
+    todos.push(newTodoObj);
+    renderTodo(newTodoObj);
+    saveTodos();
+}
+
+
+todoForm.addEventListener('submit', handleTodo);
+
+const savedTodos = localStorage.getItem(STORAGE_TODOS);
+
+if (savedTodos !== null) {
+    const parsedTodos = JSON.parse(savedTodos);
+    todos = parsedTodos;
+    parsedTodos.forEach(todo => {
+        renderTodo(todo);
+    })
+}
+
+const render = () => {
+    if (getName() !== null) {
+        loginForm.style.display = "none";
+        sayHello(getName());
+        helloDesc.innerText = '';
+        setInterval(setClock, 1000);
+        setQuote();
+    } else {
+        loginForm.style.display = "flex";
+    }
+}
+
+const init = () => {
+
+    setBackgroundImages();
+    render();
+
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        setName();
+        render();
+    })
+}
+
 init();
-
-
-
