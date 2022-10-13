@@ -144,9 +144,9 @@ const renderTodo = (item) => {
     li.id = item.id;
 
     const checkBox = document.createElement('input');
-    checkBox.setAttribute("type", "checkbox");
+    checkBox.type='checkbox'
     checkBox.classList.add('todo-checkbox');
-
+    
     const span = document.createElement('span');
     span.classList.add('todo-txt');
 

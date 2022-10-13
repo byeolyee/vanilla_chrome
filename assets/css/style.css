@@ -15,13 +15,13 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
 .scroll-x::-webkit-scrollbar {
   display: none;
 }
 
 .scroll-off {
   overflow: hidden;
+  -ms-touch-action: none;
   touch-action: none;
 }
 
@@ -73,7 +73,6 @@ a {
   cursor: pointer;
   text-decoration: none;
 }
-
 a:hover, a:focus {
   text-decoration: none;
 }
@@ -83,19 +82,17 @@ button {
   background-color: transparent;
   cursor: pointer;
 }
-
 button:disabled {
   cursor: not-allowed;
 }
 
 select,
-input,
 textarea,
 button {
   -webkit-appearance: none;
 }
 
-input[type="number"] {
+input[type=number] {
   -moz-appearance: textfield;
 }
 
@@ -109,7 +106,6 @@ select {
   background-color: transparent;
   cursor: pointer;
 }
-
 select::-ms-expand {
   display: none;
 }
@@ -119,14 +115,18 @@ textarea {
   font-size: inherit;
   border: 0;
 }
-
 input::placeholder,
 textarea::placeholder {
   /* Chrome, Safari, Firefox */
   color: #c9c9c9;
   opacity: 1;
 }
-
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  /* IE, Edge */
+  color: #c9c9c9;
+  opacity: 1;
+}
 input[readonly]::placeholder, input:disabled::placeholder,
 textarea[readonly]::placeholder,
 textarea:disabled::placeholder {
@@ -134,7 +134,6 @@ textarea:disabled::placeholder {
   color: rgba(0, 0, 0, 0.2);
   opacity: 1;
 }
-
 input[readonly]:-ms-input-placeholder, input:disabled:-ms-input-placeholder,
 textarea[readonly]:-ms-input-placeholder,
 textarea:disabled:-ms-input-placeholder {
@@ -142,14 +141,12 @@ textarea:disabled:-ms-input-placeholder {
   color: rgba(0, 0, 0, 0.2);
   opacity: 1;
 }
-
 input::-ms-clear, input::-ms-reveal,
 textarea::-ms-clear,
 textarea::-ms-reveal {
   /* IE, Edge */
   display: none;
 }
-
 input::-webkit-inner-spin-button, input::-webkit-outer-spin-button,
 textarea::-webkit-inner-spin-button,
 textarea::-webkit-outer-spin-button {
@@ -176,7 +173,6 @@ main {
   background-attachment: fixed;
   background-size: cover;
 }
-
 main .inner {
   width: 100vw;
   height: 100vh;
@@ -187,25 +183,21 @@ main .inner {
   justify-content: center;
   align-items: center;
 }
-
 main .inner .clock h2 {
   margin: 0;
   color: #fff;
   font-size: 100px;
   font-weight: 700;
 }
-
 main .inner .hello-title {
   font-weight: 700;
   font-size: 40px;
   text-decoration: underline;
   color: #fff;
 }
-
 main .inner .login-form {
   display: flex;
 }
-
 main .inner .login-form input {
   width: 200px;
   height: 50px;
@@ -214,7 +206,6 @@ main .inner .login-form input {
   border-radius: 3px;
   text-align: center;
 }
-
 main .inner .login-form button {
   width: 100px;
   height: 50px;
@@ -227,14 +218,12 @@ main .inner .login-form button {
   background-color: transparent;
   cursor: pointer;
 }
-
 main .inner .hello-desc {
   display: block;
   color: #fff;
   font-size: 14px;
   margin: 20px 0 0 0;
 }
-
 main .inner .quote {
   position: absolute;
   bottom: 0;
@@ -243,68 +232,67 @@ main .inner .quote {
   align-items: center;
   flex-direction: column;
 }
-
 main .inner .quote span {
   display: block;
   margin-bottom: 5px;
   color: #fff;
 }
-
 main .inner .todo {
-  width: 300px;
+  width: 200px;
   background-color: #fff;
-  opacity: .8;
+  opacity: 0.8;
   position: absolute;
   bottom: 0;
   right: 0;
   margin: 10px 20px;
-  border-radius: 4px;
+  border-radius: 2px;
 }
-
 main .inner .todo .todo-form {
   margin: 0 10px;
 }
-
 main .inner .todo .todo-form input {
   width: 100%;
-  height: 40px;
+  height: 20px;
   box-sizing: border-box;
-  font-size: 1.2em;
+  font-size: 0.8em;
+  padding: 15px 0;
 }
-
+main .inner .todo .todo-form input:focus {
+  border: 0;
+}
 main .inner .todo .todo-list {
   list-style: none;
   padding-left: 0;
   margin: 10px;
 }
-
 main .inner .todo .todo-list .todo-item {
   display: flex;
   align-items: center;
   margin: 10px 0;
 }
-
 main .inner .todo .todo-list .todo-item .todo-txt {
   margin-right: 10px;
-  font-size: 1.3em;
+  font-size: 0.8em;
   font-family: sans-serif;
 }
-
+main .inner .todo .todo-list .todo-item .todo-checkbox {
+  margin-right: 4px;
+}
 main .inner .todo .todo-list .todo-item .todo-del-btn {
-  width: 20px;
-  height: 20px;
+  width: 10px;
+  height: 10px;
   outline: none;
   border: 0;
-  font-size: 0.8em;
+  font-size: 0.2em;
   font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0;
   border-radius: 3px;
-  background-color: #314570;
-  color: #fff;
+  color: #000;
 }
-
 main .inner .todo .todo-list .todo-item .todo-del-btn:hover {
   cursor: pointer;
-  opacity: .6;
-}
-/*# sourceMappingURL=style.css.map */
+  opacity: 0.6;
+}/*# sourceMappingURL=style.css.map */
